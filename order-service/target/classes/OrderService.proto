@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+
+package com.systemdesign.grpcserver;
+
+message OrderPlacementRequest {
+    ProductDTO productDTO = 1;
+}
+
+message OrderPlacementResponse {
+    string response = 1;
+}
+
+message ProductDTO {
+	string id = 1;
+	string color = 2;
+	string description = 3;
+	float price = 4;
+}
+
+message OrderUpdateRequest {
+    ProductDTO productDTO = 1;
+}
+
+message OrderUpdateResponse {
+    string response = 1;
+}
+
+service OrderService {
+    rpc placeOrder(OrderPlacementRequest) returns (OrderPlacementResponse);
+    rpc updateOrder(OrderUpdateRequest) returns (OrderUpdateResponse);
+}
